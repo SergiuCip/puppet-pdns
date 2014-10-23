@@ -1,0 +1,10 @@
+### File managed with puppet ###
+### Served by:        '<%= @puppet_agent_server %>'
+### Module:           '<%= scope.to_hash['module_name'] %>'
+### Template source:  'MODULES<%= template_source.gsub(Regexp.new("^#{Puppet::Node::Environment.current[:modulepath].gsub(':','|')}"),"") %>'
+
+launch=gmysql
+gmysql-host=<%= @db_host %>
+gmysql-user=<%= @db_user %>
+gmysql-password=<%= @db_password %>
+gmysql-dbname=<%= @db_name %>
