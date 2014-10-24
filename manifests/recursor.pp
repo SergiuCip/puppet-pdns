@@ -8,6 +8,9 @@
 #   Hash of additional configuration parameters for pdns-recursor
 #   More information can be found in pdns::recursor::config
 #
+# [*Forward_zones*]
+#   Arry of zones for which the recursor will forward to an authoratitive server
+#
 # [*owner*]
 #   Owner of files/directory maintained by this module
 #
@@ -35,12 +38,14 @@
 #       value: 0
 #
 class pdns::recursor(
-  $conf_hash    = {},
-  $group        = 'root',
-  $includedir   = '/etc/pdns-recursor.puppet.d',
-  $localaddress = $::ipaddress,
-  $localport    = '53',
-  $owner        = 'root',
+  $conf_hash         = {},
+  $forward_zones     = [],
+  $forward_zones_dir = '/etc/pdns-recursor.forwardzones.d',
+  $group             = 'root',
+  $includedir        = '/etc/pdns-recursor.puppet.d',
+  $localaddress      = $::ipaddress,
+  $localport         = '53',
+  $owner             = 'root',
 ) {
 
   include pdns::recursor::package
